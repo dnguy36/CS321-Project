@@ -90,29 +90,66 @@ function setStart(lat, lon) {
     startMarker = L.marker([lat, lon], { icon: startIcon })
         .addTo(map)
         .bindPopup(`Start: ${startName}`)
-        .openPopup();
+// ============================================================
+// STATE
+// ============================================================
 
-    document.getElementById('start-name-display').textContent = startName;
+let startMarker = null;
+let endMarker   = null;
+let routeLine   = null;
+let startCoords = null;
+let endCoords   = null;
+
+const startSelect   = document.getElementById("start-select");
+const endSelect     = document.getElementById("end-select");
+const routeBtn      = document.getElementById("route-btn");
+const clearBtn      = document.getElementById("clear-btn");
+const routeInfo     = document.getElementById("route-info");
+const distanceEl    = document.getElementById("distance");
+const walkingTimeEl = document.getElementById("walking-time");
+const statusEl      = document.getElementById("status");
+
+// ============================================================
+// LOAD POIs — builds dropdowns and places map markers
+// ============================================================
+
+POIS.forEach(poi => {
+    // Add to both dropdowns
+    const val = JSON.stringify({ lat: poi.lat, lon: poi.lon });
+    startSelect.appendChild(new Option(poi.name, val));
+    endSelect.appendChild(new Option(poi.name, val));
+
+    // Place a blue marker on the map
+    L.marker([poi.lat, poi.lon])
+        .addTo(map)
+        .bindPopup(`<b>${poi.name}</b><br>${poi.description}`)
+        .on("click", () => {
+            if (!startCoords) {
+                setStart(poi.lat, poi.lon);
+                startSelect.value = val;
+            } else if (!endCoords) {
+                setEnd(poi.lat, poi.lon);
+                endSelect.value = val;
+                showRoute();
+            }
+        });
+});
+
+// ============================================================
+// MARKER HELPERS
+// ============================================================
+
+function setStart(lat, lon) {
+    startCoords = { lat, lon };
+    if (startMarker) map.removeLayer(startMarker);
+    startMarker = L.marker([lat, lon], { icon: startIcon }).addTo(map).bindPopup("Start").openPopup();
     updateRouteBtn();
 }
 
 function setEnd(lat, lon) {
-    endCoords = {lat, lon};
-
-    const nearest = getNearestPOI({lat, lon});
-    if (nearest && haversine({lat, lon}, nearest) < 70) { // Checks if point-of-interest is within 70 meters of selected location
-        endName = nearest.name;
-    } else {
-        endName = "Selected Map Point";
-    }
-
+    endCoords = { lat, lon };
     if (endMarker) map.removeLayer(endMarker);
-    endMarker = L.marker([lat, lon], { icon: endIcon })
-        .addTo(map)
-        .bindPopup(`Destination: ${endName}`)
-        .openPopup();
-    
-    document.getElementById('dest-name-display').textContent = endName;
+    endMarker = L.marker([lat, lon], { icon: endIcon }).addTo(map).bindPopup("Destination").openPopup();
     updateRouteBtn();
 }
 
@@ -120,57 +157,20 @@ function updateRouteBtn() {
     routeBtn.disabled = !(startCoords && endCoords);
 }
 
+// ============================================================
+// MAP CLICK — first click = start, second click = end + route
+// ============================================================
+
 map.on("click", (e) => {
     const { lat, lng } = e.latlng;
     if (!startCoords) {
         setStart(lat, lng);
     } else if (!endCoords) {
         setEnd(lat, lng);
-        findRoute();
+        showRoute();
     }
 });
 
-startSelect.addEventListener("change", () => {
-    if (startSelect.value) {
-        const coords = JSON.parse(startSelect.value);
-        setStart(coords.lat, coords.lon);
-        if (endCoords) findRoute();
-    }
-});
-
-endSelect.addEventListener("change", () => {
-    if (endSelect.value) {
-        const coords = JSON.parse(endSelect.value);
-        setEnd(coords.lat, coords.lon);
-        if (startCoords) findRoute();
-    }
-});
-
-routeBtn.addEventListener("click", findRoute);
-
-clearBtn.addEventListener("click", () => {
-    startCoords = null;
-    endCoords = null;
-    if (startMarker) map.removeLayer(startMarker);
-    if (endMarker) map.removeLayer(endMarker);
-    if (routeLine) map.removeLayer(routeLine);
-    startMarker = null;
-    endMarker = null;
-    routeLine = null;
-    startSelect.value = "";
-    endSelect.value = "";
-    routeBtn.disabled = true;
-    routeInfo.classList.add("hidden");
-    statusEl.classList.add("hidden");
-});
-
-function haversine(a, b) { // Calculates shortest distance between 2 points on a sphere
-    const R = 6371000;
-    const phi1 = a.lat * Math.PI / 180;
-    const phi2 = b.lat * Math.PI / 180;
-    const dphi = (b.lat - a.lat) * Math.PI / 180;
-    const dlam = (b.lon - a.lon) * Math.PI / 180;
-    const h = Math.sin(dphi/2)**2 + Math.cos(phi1)*Math.cos(phi2)*Math.sin(dlam/2)**2;
     return 2 * R * Math.atan2(Math.sqrt(h), Math.sqrt(1-h));
 }
 function getNearestPOI(coords) { // Nearest point-of-interest based on coordinate
