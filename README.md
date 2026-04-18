@@ -35,3 +35,7 @@ frontend/    Leaflet frontend interface
 data/        Graph and POI data
 docs/        Diagrams, requirements, and sketches
 tests/       Test files
+
+## Testing UI
+Download all contents in the frontend folder and place them together in a folder
+Open index.html in a supported browser
