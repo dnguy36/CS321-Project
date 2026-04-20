@@ -94,49 +94,53 @@ const endIcon = L.icon({
 // ============================================================
 
 let startMarker = null;
-let endMarker   = null;
-let routeLine   = null;
+let endMarker = null;
+let routeLine = null;
+let poiMarkers = [];
 let startCoords = null;
-let endCoords   = null;
+let endCoords = null;
 
-const startSelect   = document.getElementById("start-select");
-const endSelect     = document.getElementById("end-select");
-const routeBtn      = document.getElementById("route-btn");
-const clearBtn      = document.getElementById("clear-btn");
-const routeInfo     = document.getElementById("route-info");
-const distanceEl    = document.getElementById("distance");
+const startSelect = document.getElementById("start-select");
+const endSelect = document.getElementById("end-select");
+const routeBtn = document.getElementById("route-btn");
+const clearBtn = document.getElementById("clear-btn");
+const routeInfo = document.getElementById("route-info");
+const distanceEl = document.getElementById("distance");
 const walkingTimeEl = document.getElementById("walking-time");
-const statusEl      = document.getElementById("status");
+const statusEl = document.getElementById("status");
 
-// ============================================================
-// LOAD POIs — builds dropdowns and places map markers
-// ============================================================
+let pois = [];
 
-POIS.forEach(poi => {
-    // Add to both dropdowns
-    const val = JSON.stringify({ lat: poi.lat, lon: poi.lon });
-    startSelect.appendChild(new Option(poi.name, val));
-    endSelect.appendChild(new Option(poi.name, val));
+async function loadPOIs() {
+    try {
+        const res = await fetch("/api/pois");
+        const data = await res.json();
+        pois = data.pois;
 
-    // Place a blue marker on the map
-    L.marker([poi.lat, poi.lon])
-        .addTo(map)
-        .bindPopup(`<b>${poi.name}</b><br>${poi.description}`)
-        .on("click", () => {
-            if (!startCoords) {
-                setStart(poi.lat, poi.lon);
-                startSelect.value = val;
-            } else if (!endCoords) {
-                setEnd(poi.lat, poi.lon);
-                endSelect.value = val;
-                showRoute();
-            }
+        pois.forEach(poi => {
+            const opt1 = new Option(poi.name, JSON.stringify({ lat: poi.lat, lon: poi.lon }));
+            const opt2 = new Option(poi.name, JSON.stringify({ lat: poi.lat, lon: poi.lon }));
+            startSelect.appendChild(opt1);
+            endSelect.appendChild(opt2);
+
+            const marker = L.marker([poi.lat, poi.lon])
+                .addTo(map)
+                .bindPopup(`<b>${poi.name}</b><br>${poi.description}`);
+            marker.on("click", () => {
+                if (!startCoords) {
+                    setStart(poi.lat, poi.lon);
+                    startSelect.value = JSON.stringify({ lat: poi.lat, lon: poi.lon });
+                } else if (!endCoords) {
+                    setEnd(poi.lat, poi.lon);
+                    endSelect.value = JSON.stringify({ lat: poi.lat, lon: poi.lon });
+                }
+            });
+            poiMarkers.push(marker);
         });
-});
-
-// ============================================================
-// MARKER HELPERS
-// ============================================================
+    } catch (e) {
+        console.error("Failed to load POIs:", e);
+    }
+}
 
 function setStart(lat, lon) {
     startCoords = { lat, lon };
@@ -156,17 +160,13 @@ function updateRouteBtn() {
     routeBtn.disabled = !(startCoords && endCoords);
 }
 
-// ============================================================
-// MAP CLICK — first click = start, second click = end + route
-// ============================================================
-
 map.on("click", (e) => {
     const { lat, lng } = e.latlng;
     if (!startCoords) {
         setStart(lat, lng);
     } else if (!endCoords) {
         setEnd(lat, lng);
-        showRoute();
+        findRoute();
     }
 });
 
