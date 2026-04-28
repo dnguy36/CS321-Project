@@ -59,6 +59,11 @@ source venv/bin/activate        # macOS / Linux
 venv\Scripts\activate           # Windows
 ```
 
+```bash
+python -m venv venv
+source venv/bin/activate        # macOS / Linux
+```
+
 ### 3. Install dependencies
 
 ```bash
@@ -68,6 +73,7 @@ pip install fastapi uvicorn osmnx networkx
 ### 4. Build the walking network graph (first time only)
 
 ```bash
+cd backend
 python build_graph.py
 ```
 
