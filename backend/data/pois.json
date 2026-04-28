@@ -1,135 +1,75 @@
 [
   {
-    "name": "Johnson Center (JC)",
-    "lat": 38.83004971150949,
-    "lon": -77.30733295031843,
-    "description": "Student union, dining, and campus hub"
+    "name": "Johnson Center",
+    "lat": 38.8316,
+    "lon": -77.3089,
+    "description": "Student union and dining"
   },
   {
     "name": "Fenwick Library",
-    "lat": 38.83222999184915,
-    "lon": -77.30705818865616,
+    "lat": 38.8322,
+    "lon": -77.3073,
     "description": "Main university library"
   },
   {
-    "name": "Horizon Hall",
-    "lat": 38.83120602912791,
-    "lon": -77.30760544751024,
-    "description": "Classrooms and Mason Core facilities"
+    "name": "Engineering Building",
+    "lat": 38.8279,
+    "lon": -77.3056,
+    "description": "Volgenau School of Engineering"
   },
   {
     "name": "The Hub",
-    "lat": 38.8308406364615,
-    "lon": -77.30478793548562,
+    "lat": 38.8303,
+    "lon": -77.3077,
     "description": "Dining and student services"
   },
   {
     "name": "Merten Hall",
-    "lat": 38.835203402528364,
-    "lon": -77.30788458870175,
-    "description": "Administrative offices and admissions"
+    "lat": 38.8340,
+    "lon": -77.3078,
+    "description": "Administrative offices"
   },
   {
-    "name": "Sub I",
-    "lat": 38.831743205922926,
-    "lon": -77.30884375328296,
-    "description": "Student services and office of the registrar"
+    "name": "Robinson Hall",
+    "lat": 38.8330,
+    "lon": -77.3060,
+    "description": "Classrooms and offices"
   },
   {
-    "name": "Peterson Family Health Sciences Hall",
-    "lat": 38.83412236158056,
-    "lon": -77.30903322382038,
-    "description": "College of Health and Human Services"
-  },
-  {
-    "name": "Exploratory Hall",
-    "lat": 38.8299355014904,
-    "lon": -77.30556620364892,
-    "description": "Science labs and research"
-  },
-  {
-    "name": "Planetary Hall",
-    "lat": 38.829859886256095,
-    "lon": -77.306112060028,
-    "description": "Science and technology classrooms"
+    "name": "Peterson Hall",
+    "lat": 38.8295,
+    "lon": -77.3095,
+    "description": "Family housing and classrooms"
   },
   {
     "name": "David King Hall",
-    "lat": 38.83069453307228,
-    "lon": -77.30668942269443,
-    "description": "Psychology and science classrooms"
+    "lat": 38.8310,
+    "lon": -77.3055,
+    "description": "Classrooms and lecture halls"
+  },
+  {
+    "name": "Exploratory Hall",
+    "lat": 38.8298,
+    "lon": -77.3070,
+    "description": "Science and research building"
   },
   {
     "name": "Innovation Hall",
-    "lat": 38.828566410345964,
-    "lon": -77.30748071359787,
-    "description": "IT services and computer labs"
+    "lat": 38.8283,
+    "lon": -77.3043,
+    "description": "Computer science and IT"
   },
   {
     "name": "Nguyen Engineering Building",
-    "lat": 38.82757122023892,
-    "lon": -77.30510244309627,
-    "description": "Volgenau School of Engineering"
-  },
-  {
-    "name": "Enterprise Hall",
-    "lat": 38.82903267479362,
-    "lon": -77.30639629199683,
-    "description": "School of Business"
-  },
-  {
-    "name": "Art and Design Building",
-    "lat": 38.82796686711091,
-    "lon": -77.30633708766194,
-    "description": "Studios and galleries"
-  },
-  {
-    "name": "Aquatic & Fitness Center",
-    "lat": 38.82646752420752,
-    "lon": -77.30425528559282,
-    "description": "Gym and swimming pools"
+    "lat": 38.8274,
+    "lon": -77.3063,
+    "description": "Research and engineering labs"
   },
   {
     "name": "EagleBank Arena",
-    "lat": 38.82688739166501,
-    "lon": -77.30966395236872,
+    "lat": 38.8275,
+    "lon": -77.3125,
     "description": "Events and athletics venue"
-  },
-  {
-    "name": "Research Hall",
-    "lat": 38.82835750835199,
-    "lon": -77.3050814863972,
-    "description": "Home to Physics, Astronomy, and the campus Observatory"
-  },
-  {
-    "name": "Buchanan Hall",
-    "lat": 38.82879739042823,
-    "lon": -77.3085339672103,
-    "description": "University administration and Global Education Office"
-  },
-  {
-    "name": "College Hall",
-    "lat": 38.82898512356102,
-    "lon": -77.30792051073793,
-    "description": "Houses classrooms, faculty offices, and student learning spaces"
-  },
-  {
-    "name": "Performing Arts Building",
-    "lat": 38.82998032686148,
-    "lon": -77.30864409335548,
-    "description": "Houses music, theater, dance, and arts education"
-  },
-  {
-    "name": "Mason Pond Parking Deck",
-    "lat": 38.83047990216005,
-    "lon": -77.30941600322029,
-    "description": "Parking Building near Mason Pond"
-  },
-  {
-    "name": "Harris Theatre",
-    "lat": 38.83097301134171,
-    "lon": -77.30867571352258,
-    "description": "Theatre Building designed for flexible performances and close interaction between performers and the audience"
   }
-
 ]
+
