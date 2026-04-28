@@ -31,10 +31,9 @@ The Campus Path Optimizer helps users find the optimal walking path between two 
 ## Project Structure
 ```text
 backend/     FastAPI backend and routing logic
+    data/        Graph and POI data
+
 frontend/    Leaflet frontend interface
-data/        Graph and POI data
-docs/        Diagrams, requirements, and sketches
-tests/       Test files
 ```
 
 ## Setup
