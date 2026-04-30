@@ -1,8 +1,8 @@
 [
   {
     "name": "Johnson Center",
-    "lat": 38.8316,
-    "lon": -77.3089,
+    "lat": 38.83000433404513,
+    "lon": -77.3074460833812,
     "description": "Student union and dining"
   },
   {
@@ -12,63 +12,63 @@
     "description": "Main university library"
   },
   {
-    "name": "Engineering Building",
-    "lat": 38.8279,
-    "lon": -77.3056,
-    "description": "Volgenau School of Engineering"
+    "name": "Enterprise Hall",
+    "lat": 38.8290490596666,
+    "lon": -77.30613838824199,
+    "description": "Classrooms and lecture halls"
   },
   {
     "name": "The Hub",
-    "lat": 38.8303,
-    "lon": -77.3077,
+    "lat": 38.83067447324394,
+    "lon": -77.3047599725404,
     "description": "Dining and student services"
   },
   {
     "name": "Merten Hall",
-    "lat": 38.8340,
-    "lon": -77.3078,
+    "lat": 38.8350269128697,
+    "lon": -77.30783423951708,
     "description": "Administrative offices"
   },
   {
-    "name": "Robinson Hall",
-    "lat": 38.8330,
-    "lon": -77.3060,
+    "name": "Horizon Hall",
+    "lat": 38.83140385265274,
+    "lon": -77.30777112170149,
     "description": "Classrooms and offices"
   },
   {
     "name": "Peterson Hall",
-    "lat": 38.8295,
-    "lon": -77.3095,
+    "lat": 38.834397837847426,
+    "lon": -77.30916610882944,
     "description": "Family housing and classrooms"
   },
   {
     "name": "David King Hall",
-    "lat": 38.8310,
-    "lon": -77.3055,
+    "lat": 38.83069355340913,
+    "lon": -77.30675003519978,
     "description": "Classrooms and lecture halls"
   },
   {
     "name": "Exploratory Hall",
-    "lat": 38.8298,
-    "lon": -77.3070,
+    "lat": 38.83001929835865,
+    "lon": -77.30588051691596,
     "description": "Science and research building"
   },
   {
     "name": "Innovation Hall",
-    "lat": 38.8283,
-    "lon": -77.3043,
+    "lat": 38.82847016343902,
+    "lon": -77.30750331607722,
     "description": "Computer science and IT"
   },
   {
     "name": "Nguyen Engineering Building",
-    "lat": 38.8274,
-    "lon": -77.3063,
+    "lat":  38.82753312635608,
+    "lon": -77.3051402867197,
     "description": "Research and engineering labs"
   },
   {
     "name": "EagleBank Arena",
-    "lat": 38.8275,
-    "lon": -77.3125,
+    "lat": 38.82688446531784,
+    "lon":  -77.30967503354685,
     "description": "Events and athletics venue"
   }
 ]
